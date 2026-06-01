@@ -1,10 +1,33 @@
-# Supplementary Code & Data — Random Forest Model for SO₂ Concentration Prediction
+# Machine-Learning Modeling of Flue Gas Desulfurization — SO₂ Outlet-Concentration Prediction
 
-This repository contains the **code, dataset, and reviewer response** supporting
-the manuscript submitted to *Scientific Reports* (Ms. **41598-2024-51586**).
-It is provided so that reviewers and readers can inspect and reproduce the
-Random Forest regression model used to predict **SO₂ concentration** from four
-experimental variables.
+Supplementary **code, dataset, and reviewer response** for the *Scientific Reports* article:
+
+> **Modeling based on machine learning to investigate flue gas desulfurization
+> performance by calcium silicate absorbent in a sand bed reactor**
+> DOI: [10.1038/s41598-024-51586-7](https://doi.org/10.1038/s41598-024-51586-7)
+
+The study evaluates several machine-learning models — **ANN, MLP, RBFNN, Random
+Forest (RF), ETR, and SVR** — for predicting the **outlet SO₂ concentration** of
+a sand-bed flue gas desulfurization (FGD) reactor packed with a calcium-silicate
+absorbent. This repository provides the **Random Forest** implementation,
+together with the dataset and the point-by-point reviewer response.
+
+---
+
+## ⚠️ What the model actually predicts
+
+The target variable is the **SO₂ concentration (ppm) at the *outlet* of the
+reactor**, as measured continuously by the downstream SO₂ gas analyzer. It is
+**not** adsorption capacity or removal efficiency. The modeled behaviour is:
+
+- **Start:** fresh absorbent removes SO₂ → outlet concentration *decreases*.
+- **Over time:** the absorbent saturates → outlet concentration *rises* toward
+  the inlet value.
+- **≈ 20 min:** absorbent saturated → outlet concentration *plateaus* near the
+  baseline inlet level.
+
+> Any reading of the figures as adsorption efficiency or material regeneration is
+> a misinterpretation of this measured outlet-concentration signal.
 
 ---
 
@@ -22,7 +45,9 @@ experimental variables.
 
 ## 📊 Dataset
 
-The dataset (`Sheet1`, **323 samples**) contains four input features and one target:
+The dataset (`Sheet1`, **323 samples**) holds four input features and one target.
+The values are outlet SO₂ concentrations over time, drawn from published
+experimental measurements of calcium-silicate FGD (see Reference [1]).
 
 | Column | Symbol | Unit | Role |
 |--------|--------|------|------|
@@ -30,7 +55,7 @@ The dataset (`Sheet1`, **323 samples**) contains four input features and one tar
 | Absorbent weight | — | g | feature |
 | Temperature | T | °C | feature |
 | Time | t | min | feature |
-| **SO₂ concentration** | — | ppm | **target** |
+| **SO₂ concentration (outlet)** | — | ppm | **target** |
 
 ---
 
@@ -75,6 +100,17 @@ python RF.py
 Running the script prints the evaluation metrics to the console and opens the
 learning-curve figure.
 
+### Expected output (normalised scale, `random_state=20`)
+
+| Metric | Training set | Validation set |
+|--------|:------------:|:--------------:|
+| RMSE   | 0.0525       | 0.085          |
+| R²     | 0.988        | 0.967          |
+| MAE    | 0.0395       | 0.064          |
+
+The small train↔validation gap and the converging, flattening learning curve
+indicate the Random Forest model **generalises well and is not overfitting**.
+
 ---
 
 ## 📄 Viewing / recompiling the code PDF
@@ -93,9 +129,20 @@ No special packages or `-shell-escape` are required — it uses the standard
 
 ## ✒️ Citation
 
-If you use this code or data, please cite the associated *Scientific Reports*
-article (Ms. 41598-2024-51586).
+If you use this code or data, please cite:
 
-## Contact
+> Modeling based on machine learning to investigate flue gas desulfurization
+> performance by calcium silicate absorbent in a sand bed reactor.
+> *Scientific Reports* (2024). DOI: 10.1038/s41598-024-51586-7
 
-**Mohammad Sadegh Kalami Yazdi** — Kalami1378@yahoo.com
+**Reference**
+[1] L. F. Arthur, *Silicate sorbents for flue gas cleaning*, The University of
+Texas at Austin, 1998.
+
+---
+
+## 👤 Authors & contact
+
+- **Dr. Ahad Ghaemi** (corresponding author) — Iran University of Science and
+  Technology — <aghaemi@iust.ac.ir>
+- **Mohammad Sadegh Kalami Yazdi** — <Kalami1378@yahoo.com>
