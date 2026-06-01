@@ -1,0 +1,107 @@
+\documentclass[11pt]{article}
+
+% ==================== Packages ====================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,margin=2.4cm]{geometry}
+\usepackage{lmodern}
+\usepackage{inconsolata}      % clean monospaced font for the code
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\usepackage{titling}
+
+% ==================== Colours ====================
+\definecolor{codebg}{RGB}{248,249,250}
+\definecolor{framegray}{RGB}{210,214,219}
+\definecolor{linenumgray}{RGB}{150,150,150}
+\definecolor{kwblue}{RGB}{0,92,197}
+\definecolor{strgreen}{RGB}{3,125,80}
+\definecolor{commentgray}{RGB}{106,115,125}
+\definecolor{numorange}{RGB}{190,90,0}
+\definecolor{builtinpurple}{RGB}{111,66,193}
+
+% ==================== Listing style ====================
+\lstdefinestyle{pythonstyle}{
+  language=Python,
+  backgroundcolor=\color{codebg},
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{kwblue}\bfseries,
+  stringstyle=\color{strgreen},
+  commentstyle=\color{commentgray}\itshape,
+  emph={self,True,False,None},
+  emphstyle=\color{builtinpurple},
+  numbers=left,
+  numberstyle=\ttfamily\footnotesize\color{linenumgray},
+  numbersep=10pt,
+  stepnumber=1,
+  frame=single,
+  rulecolor=\color{framegray},
+  framerule=0.5pt,
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=4,
+  columns=fullflexible,
+  keepspaces=true,
+  upquote=true,
+  xleftmargin=2.2em,
+  xrightmargin=0.6em,
+  aboveskip=1em,
+  belowskip=1em,
+  literate=
+    {2}{{{\color{numorange}2}}}1
+    {0}{{{\color{numorange}0}}}1
+    {1}{{{\color{numorange}1}}}1
+    {3}{{{\color{numorange}3}}}1
+    {4}{{{\color{numorange}4}}}1
+    {5}{{{\color{numorange}5}}}1
+    {6}{{{\color{numorange}6}}}1
+    {7}{{{\color{numorange}7}}}1
+    {8}{{{\color{numorange}8}}}1
+    {9}{{{\color{numorange}9}}}1
+}
+
+% ==================== Header / footer ====================
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small Supplementary Code}
+\rhead{\small Random Forest Regression Model}
+\cfoot{\small \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ==================== Title ====================
+\title{\vspace{-1.5em}\textbf{Supplementary Code: Random Forest Regression Model for SO\textsubscript{2} Concentration Prediction}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+\vspace{-3em}
+
+% ==================== Description ====================
+\noindent
+This document reproduces, in full, the Python script (\texttt{RF.py}) used to
+train and evaluate the Random Forest regression model reported in the
+manuscript. The model predicts the SO\textsubscript{2} concentration from four
+input features---relative humidity, absorbent weight, temperature, and
+time. The workflow comprises: (i) loading the experimental data, (ii)
+min--max normalisation of the features and target, (iii) a 70/20/10
+train/validation/test split, (iv) training a tuned Random Forest regressor,
+(v) computing the standard error metrics (MSE, RMSE, $R^2$, MAE), and
+(vi) generating a cross-validated learning curve. The code is reproduced
+verbatim below; line numbers are provided for ease of reference.
+
+\vspace{0.5em}
+\noindent\textbf{Software:} Python~3 with \texttt{pandas}, \texttt{numpy},
+\texttt{scikit-learn}, and \texttt{matplotlib}.
+
+\vspace{1em}
+
+% ==================== Code ====================
+\lstinputlisting[style=pythonstyle]{RF.py}
+
+\end{document}
