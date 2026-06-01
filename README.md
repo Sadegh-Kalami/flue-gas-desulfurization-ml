@@ -139,6 +139,21 @@ If you use this code or data, please cite:
 [1] L. F. Arthur, *Silicate sorbents for flue gas cleaning*, The University of
 Texas at Austin, 1998.
 
+Machine-readable citation metadata is provided in
+[`CITATION.cff`](CITATION.cff), which powers GitHub's **"Cite this repository"**
+button.
+
+---
+
+## 📜 License
+
+The code and data in this repository are released under the **GNU Affero General
+Public License v3.0 (AGPL-3.0)** — see the [`LICENSE`](LICENSE) file.
+
+> **Please cite us.** If you use this code or data in academic or other work,
+> cite the *Scientific Reports* article above
+> (DOI: [10.1038/s41598-024-51586-7](https://doi.org/10.1038/s41598-024-51586-7)).
+
 ---
 
 ## 👤 Authors & contact

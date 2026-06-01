@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the article below."
+title: "Machine-Learning Modeling of Flue Gas Desulfurization — SO2 Outlet-Concentration Prediction (Random Forest)"
+authors:
+  - family-names: "Ghaemi"
+    given-names: "Ahad"
+    affiliation: "Iran University of Science and Technology"
+    email: "aghaemi@iust.ac.ir"
+  - family-names: "Kalami Yazdi"
+    given-names: "Mohammad Sadegh"
+    email: "Kalami1378@yahoo.com"
+license: "AGPL-3.0-or-later"
+preferred-citation:
+  type: article
+  title: "Modeling based on machine learning to investigate flue gas desulfurization performance by calcium silicate absorbent in a sand bed reactor"
+  authors:
+    - family-names: "Ghaemi"
+      given-names: "Ahad"
+    - family-names: "Kalami Yazdi"
+      given-names: "Mohammad Sadegh"
+  journal: "Scientific Reports"
+  year: 2024
+  doi: "10.1038/s41598-024-51586-7"
